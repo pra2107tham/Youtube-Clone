@@ -11,7 +11,7 @@ export const getVideoDetails = createAsyncThunk(
             data : {items},
         } = await axios.get(`https://youtube.googleapis.com/youtube/v3/videos?key=AIzaSyDq5Pk92DgT0Q-Rf9n6u4Nzj5bBgzNyLUY&part=snippet,statistics&type=video&id=${id}`);
 
-        const parsedData =  parseData(items[0]);
+        const parsedData =  await parseData(items[0]);
         console.log(parsedData)
         return parsedData;
     }

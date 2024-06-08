@@ -7,7 +7,7 @@ import { getRecommendedVideos } from "../store/reducers/getRecommendedVideos";
 import Navbar from "../Components/Navbar"
 
 const Watch = () => {
-  const id = useParams();
+  const {id} = useParams();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -17,21 +17,20 @@ const Watch = () => {
   console.log(currentPlaying);
 
   const recommendedVideos = useAppSelector(
-    (state) => state.youtubeApp.recommended
+    (state) => state.youtubeApp.recommendedVideo
   );
 
   useEffect(() => {
-    if (!id.videoId) {
+    if (!id) {
       navigate("/");
     } else {
-      dispatch(getVideoDetails(id.videoId));
-      dispatch(getRecommendedVideos(id.videoId));
+      dispatch(getVideoDetails(id));
+      dispatch(getRecommendedVideos(id));
     }
   }, [dispatch, id, navigate]);
 
   useEffect(() => {
-    if (currentPlaying && id) dispatch(getRecommendedVideos(id.videoId));
-    window.scrollTo(0, 0);
+    if (currentPlaying && id) dispatch(getRecommendedVideos(id));
   }, [currentPlaying, id, dispatch]);
 
   return (

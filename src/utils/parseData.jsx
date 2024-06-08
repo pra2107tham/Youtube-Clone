@@ -17,7 +17,7 @@ export const parseData = async (items) => {
     }
     )
     const {
-      data : {item: channelsData},
+      data : {items: channelsData},
     } = await axios.get(`https://youtube.googleapis.com/youtube/v3/channels?part=snippet,contentDetails&id=${channelIds.join(",")}&key=AIzaSyDq5Pk92DgT0Q-Rf9n6u4Nzj5bBgzNyLUY`);
     
     const parsedChannelsData = [];
@@ -29,7 +29,7 @@ export const parseData = async (items) => {
     });
 
     const {
-      data : {item: videosData}
+      data : {items: videosData}
     } = await axios.get(
       `https://youtube.googleapis.com/youtube/v3/videos?part=contentDetails,statistics&id=${videoIds.join(",")}&key=AIzaSyDq5Pk92DgT0Q-Rf9n6u4Nzj5bBgzNyLUY`
     )
@@ -59,7 +59,7 @@ export const parseData = async (items) => {
       }
     });
 
-    return parsedData;
+    return parseData;
 
   }catch(error){
     console.log(error);

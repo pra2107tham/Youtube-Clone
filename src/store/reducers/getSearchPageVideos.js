@@ -9,7 +9,7 @@ export const getSearchPageVideos = createAsyncThunk(
     async (isNext, {getState}) => {
         // console.log(API_KEY);
         const {
-            youtubeApp : {nextPageToken : pageTokenFromState,video, searchTerm},
+            youtubeApp : {nextPageToken : nextPageTokenFromState,video, searchTerm},
         } = getState()
         const response = await axios.get(`https://youtube.googleapis.com/youtube/v3/search?&q=${searchTerm}&key=AIzaSyDq5Pk92DgT0Q-Rf9n6u4Nzj5bBgzNyLUY&part=snippet&type=video&${isNext ? `pageToken=${pageTokenFromState}` : ""}`);
         

@@ -10,7 +10,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from "../hooks/useApp"
 import { clearVideos, changeSearchTerm, clearSearchTerm } from '../features/youtube/featureSlice';
 
-const Navbar = () => {
+const   
+Navbar = () => {
 
     const location = useLocation();
     const navigate = useNavigate();
